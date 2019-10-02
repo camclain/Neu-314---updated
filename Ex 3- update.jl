@@ -39,6 +39,8 @@ function extractRGB(String)
     imshow(image)
     R = image[:,:,1]
     G = image[:,:,2]
+
+    println("BUG BUG BUG")
     B = image[:,:,3]
     return [R, G, B]
 end
