@@ -44,3 +44,23 @@ function extractRGB(String)
 end
 
 println("Reset with git reset -- mixed")
+
+## part e
+# create a new image in which the color channels are swapped from the original,
+# so that image2 relates to the originial as: G = R, B = G and R = B
+
+image2 = zeros(360, 640, 3)
+image2[:,:,1] = extractRGB("el-capitan.png")[2]
+image2[:,:,2] = extractRGB("el-capitan.png")[3]
+image2[:,:,3] = extractRGB("el-capitan.png")[1]
+
+# display the two images side by side
+
+subplot(1,2,1)
+imshow(image)
+title("Original image")
+axis("off")
+subplot(1,2,2)
+imshow(image2)
+title("Image with inverted RGB values")
+axis("off")
