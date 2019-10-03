@@ -64,3 +64,123 @@ subplot(1,2,2)
 imshow(image2)
 title("Image with inverted RGB values")
 axis("off")
+
+# Question B
+# write a function that, for a given image, circularly moves only the red
+# channel up p number of pixels
+
+"""
+circle_red_channel(String, int)
+
+Given the file name of an image (as a String), and a number of pixels
+(as an int), this returns a new image in which the red channel of the original
+image is moved up the given number of pixels. It then displays both the original
+and the new image.
+
+= PARAMETERS:
+
+- String        filename of an image
+- int           given number of pixels
+
+= RETURNS:
+
+- image2, a new image with the red channel moved up from the original.
+
+"""
+
+function circle_red_channel(String, int)
+           p = int
+           image = imread(String)
+           R = image[:,:,1]
+
+           # create an empty matrix of size R, and fill it with the
+           # corresponding rows in the original R, ensuring to loop around when
+           # the row number is greater than 360
+
+           newR = zeros(size(R))
+           for i = 1:360
+                   if (i + p) <= 360
+                   newR[i+p, :] = R[i, :]
+               elseif (i + p) > 360
+                   newR[(i + p) - 360, :] = R[i, :]
+               end
+           end
+
+           # copy the original image and input the new matrix for R
+
+           image2 = copy(image)
+           image2[:,:,1] = newR
+
+           # plot both of the images side by side
+
+           subplot(1,2,1)
+           imshow(image)
+           title("Original image")
+           axis("off")
+           subplot(1,2,2)
+           imshow(image2)
+           title("Image with shifted R values")
+           axis("off")
+
+           image2
+end
+
+# Question B
+# write a function that, for a given image, circularly moves only the red
+# channel up p number of pixels
+
+"""
+circle_red_channel(String, int)
+
+Given the file name of an image (as a String), and a number of pixels
+(as an int), this returns a new image in which the red channel of the original
+image is moved up the given number of pixels. It then displays both the original
+and the new image.
+
+= PARAMETERS:
+
+- String        filename of an image
+- int           given number of pixels
+
+= RETURNS:
+
+- image2, a new image with the red channel moved up from the original.
+
+"""
+
+function circle_red_channel(String, int)
+           p = int
+           image = imread(String)
+           R = image[:,:,1]
+
+           # create an empty matrix of size R, and fill it with the
+           # corresponding rows in the original R, ensuring to loop around when
+           # the row number is greater than 360
+
+           newR = zeros(size(R))
+           for i = 1:360
+                   if (i + p) <= 360
+                   newR[i+p, :] = R[i, :]
+               elseif (i + p) > 360
+                   newR[(i + p) - 360, :] = R[i, :]
+               end
+           end
+
+           # copy the original image and input the new matrix for R
+
+           image2 = copy(image)
+           image2[:,:,1] = newR
+
+           # plot both of the images side by side
+
+           subplot(1,2,1)
+           imshow(image)
+           title("Original image")
+           axis("off")
+           subplot(1,2,2)
+           imshow(image2)
+           title("Image with shifted R values")
+           axis("off")
+
+           image2
+end
